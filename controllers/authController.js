@@ -114,17 +114,17 @@ export const login = async (req, res) => {
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken(user);
 
-   res.cookie("accessToken", accessToken, {
+  res.cookie("accessToken", accessToken, {
   httpOnly: true,
   maxAge: process.env.AT_COOKIE_MAX_AGE,
-  secure: true,        // none ke sath secure: true zaroori hai
-  sameSite: "none",    // ← yeh change karo
+  secure: process.env.NODE_ENV === "production",
+  sameSite:process.env.NODE_ENV === "production" ? "none" : "lax" 
 });
     res.cookie("refreshToken", refreshToken, {
   httpOnly: true,
   maxAge: process.env.RT_COOKIE_MAX_AGE,
-  secure: true,        // none ke sath secure: true zaroori hai
-  sameSite: "none",
+  secure: process.env.NODE_ENV === "production",
+  sameSite:process.env.NODE_ENV === "production" ? "none" : "lax" 
 });
 
   
@@ -193,10 +193,10 @@ export const refreshAccessToken = async (req, res) => {
 
     // Set new access token cookie
     res.cookie("accessToken", newAccessToken, {
-      httpOnly: true,
-      maxAge:process.env.AT_COOKIE_MAX_AGE,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "none",
+     httpOnly: true,
+     maxAge:process.env.AT_COOKIE_MAX_AGE,
+     secure: process.env.NODE_ENV === "production",
+     sameSite:process.env.NODE_ENV === "production" ? "none" : "lax" 
     });
 
     res.status(200).json({
