@@ -36,6 +36,9 @@ app.use(cookieParser());
 app.use(helmetMiddleware());
 app.use("/", express.static(path.join(__dirname, "public")));
 // ROOT ROUTE
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Server is running" });
+})
 app.use("/api/auth",authRoutes)
 app.use("/api",dashboardRoutes)
 app.use("/api/inventory",inventoryRoutes)
