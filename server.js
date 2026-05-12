@@ -45,6 +45,9 @@ app.use("/api/production",productionRoutes)
 app.use("/api/order",orderRoutes)
 app.use("/api/setting",settingRoutes)
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ message: "Server is healthy" });
+})
 
 
 app.all("*", (req, res) => {
