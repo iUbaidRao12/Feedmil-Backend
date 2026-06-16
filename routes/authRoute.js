@@ -7,7 +7,7 @@ import alreadyLogin from "../middleware/alreadyLogin.js";
 const router=express.Router();
 
 router.post("/registerUser",UV,HVE,registerUser)
-router.post("/login", alreadyLogin,ULV,HVE,login)
+router.post("/login",ULV,HVE,login)
 router.post("/refreshAccessToken",refreshAccessToken)
 router.get("/logout",logout)
 
