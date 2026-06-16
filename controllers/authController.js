@@ -148,6 +148,7 @@ export const login = async (req, res) => {
       message: "internal server error",
       success: false,
       data: null,
+      error: err.message,
     });
   }
 };
