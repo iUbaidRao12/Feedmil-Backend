@@ -3,7 +3,7 @@ const allowedOrigins = [
   // FRONTEND LOCALHOST
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://feedmill-pro.vercel.app",
+  "https://feedmil-frontend.vercel.app/login",
 ];
 
 export default allowedOrigins;
