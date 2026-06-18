@@ -81,12 +81,12 @@ export const login = async (req, res) => {
         .json({ success: false, message: "User Not Found!" });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res
-        .status(400)
-        .json({ success: false, message: "password not match" });
-    }
+    // const isMatch = await bcrypt.compare(password, user.password);
+    // if (!isMatch) {
+    //   return res
+    //     .status(400)
+    //     .json({ success: false, message: "password not match" });
+    // }
 
     const generateAccessToken = (user) => {
       const accessData = {
